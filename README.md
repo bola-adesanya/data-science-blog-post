@@ -1,32 +1,60 @@
-# Home Health Provider Segmentation
+# Cost Efficiency Clustering for U.S. Home Health Agencies (2025)
 
-## Motivation
+This project explores how Medicare-certified home health agencies across the U.S. can be clustered based on cost efficiency and quality outcomes. Using CMS data from April 2025, we uncover hidden performance segments to support value-based care strategies.
 
-This project analyzes the Home Health Provider dataset to understand and segment providers based on services offered, performance metrics, cost efficiency, and quality ratings. The goal is to enable actionable insights for healthcare stakeholders, aiding in resource allocation, partnership decisions, and quality improvement efforts.
+## Project Motivation
 
-## Libraries Used
+Rising healthcare costs and inconsistent care quality challenge policymakers and payers. This project asks:
+**Can home health agencies be segmented into meaningful efficiency profiles to optimize payment models and promote high-value care?**
 
-- pandas: for data loading and preprocessing
-- numpy: for numerical operations
-- scikit-learn: for clustering and segmentation
-- matplotlib: for data visualization
+## Dataset
+
+- **Source:** CMS Home Health Provider Data (April 2025)
+- **Fields Used:**
+  - Medicare Cost Ratio (agency vs. national average)
+  - Number of Episodes
+  - Quality of Patient Care Star Rating
+  - Risk-Standardized Rates:
+    - Potentially Preventable Hospitalizations (PPH)
+    - Discharge to Community (DTC)
+    - Potentially Preventable Readmissions (PPR)
+
+## Methods
+
+- Preprocessing: Data cleaning, missing value handling, standardization
+- Clustering: `KMeans` clustering (k=3), Elbow Method for optimal `k`
+- Visualization: PCA for 2D cluster plotting, box plots, summary tables
+
+## Results
+
+Three efficiency clusters emerged:
+
+| Label              | Characteristics                                  |
+|-------------------|---------------------------------------------------|
+| **Value Leaders** | Low cost, high quality, low readmission rates     |
+| **Balanced**      | Average on cost and quality metrics               |
+| **Inefficient**   | High cost, lower quality, poor clinical outcomes  |
+
+These clusters can inform:
+
+- Bundled payment model design
+- Regional performance audits
+- Targeted provider improvement initiatives
 
 ## Files in this Repository
 
 - `data/HH_Provider_Apr2025.csv`: The original dataset containing information about Home Health providers.
-- `notebooks/exploratory_analysis.ipynb`: Jupyter notebook with data exploration and cleaning steps.
-- `notebooks/segmentation_analysis.ipynb`: Notebook with clustering, profiling, and results.
-- `results/segmentation_report.pdf`: Final report and visualizations of the segmentation analysis.
+- `data/HHS_Data_Dictionary.pdf`: Document that contains detailed information about the dataset.
+- `notebooks/exploratory_data_analysis.ipynb`: Jupyter notebook with data exploration and cleaning steps.
+- `notebooks/cost_efficiency_clustering.ipynb`: Notebook with clustering, results and recommendations.
 
-## Summary of Results
+## Use Case: Value-Based Care Optimization
 
-The segmentation revealed distinct groups of providers:
+This clustering supports stakeholders in identifying:
 
-- High-performing, low-cost providers.
-- Specialized service providers (e.g., therapy-focused, nursing-focused, etc.).
-- Regional clusters with differing quality and cost profiles.
-
-These results can support stakeholders in selecting providers for partnerships, identifying opportunities for quality improvement, and optimizing resource allocation.
+- Which agencies offer **"more care per dollar"**
+- Where to **redirect funding or oversight**
+- How to **prioritize technical assistance** and quality improvement
 
 ## Acknowledgments and References
 
